@@ -1,6 +1,6 @@
 "use client";
 import React from 'react';
-import { Code, Mail, ShieldAlert, CircleDot, MapPin, Package } from 'lucide-react';
+import { Code, Mail, ShieldAlert, MapPin, Package } from 'lucide-react';
 
 interface TicketProps {
   name: string;

@@ -31,7 +31,7 @@ export default function Success() {
           </div>
           <h1 className="text-3xl md:text-4xl font-bold text-white mb-4">Thank You for Registering!</h1>
           <p className="text-lg text-purple-200 mb-6">
-            We've emailed your ticket to <span className="font-semibold">{email}</span>.
+            We&apos;ve emailed your ticket to <span className="font-semibold">{email}</span>.
             <br/>Get ready for an amazing experience at Coding Conf 2025!
           </p>
           <div className="w-24 h-1 bg-purple-500 mx-auto my-6"></div>
@@ -50,7 +50,7 @@ export default function Success() {
 
         {/* Next Steps */}
         <div className="bg-purple-800 rounded-lg p-6 text-white max-w-2xl mx-auto">
-          <h3 className="text-xl font-semibold mb-4">What's Next?</h3>
+          <h3 className="text-xl font-semibold mb-4">What&apos;s Next?</h3>
           <ul className="space-y-3">
             <li className="flex items-start">
               <CheckCircle2 className="w-6 h-6 text-purple-300 mr-2" />
