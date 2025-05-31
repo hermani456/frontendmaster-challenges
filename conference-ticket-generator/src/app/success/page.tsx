@@ -1,21 +1,43 @@
 "use client";
 
-import React, { useEffect, useState } from 'react';
-import Ticket from '../components/ticket';
-import { useSearchParams } from 'next/navigation';
-import Link from 'next/link';
-import { CheckCircle, Twitter, Facebook, Instagram, CheckCircle2 } from 'lucide-react';
+import React, { useEffect, useState, Suspense } from "react";
+import Ticket from "../components/ticket";
+import { useSearchParams } from "next/navigation";
+import Link from "next/link";
+import {
+  CheckCircle,
+  Twitter,
+  Facebook,
+  Instagram,
+  CheckCircle2,
+} from "lucide-react";
 
 export default function Success() {
+  return (
+    <Suspense
+      fallback={
+        <div className="min-h-screen py-8 px-4 flex items-center justify-center">
+          <div className="text-white text-lg">
+            Loading ticket information...
+          </div>
+        </div>
+      }
+    >
+      <SuccessContent />
+    </Suspense>
+  );
+}
+
+function SuccessContent() {
   const searchParams = useSearchParams();
-  const [imageSrc, setImageSrc] = useState('');
-  
-  const name = searchParams.get('name') || 'Guest';
-  const email = searchParams.get('email') || 'email@example.com';
-  const github = searchParams.get('github') || '@github';
-  
+  const [imageSrc, setImageSrc] = useState("");
+
+  const name = searchParams.get("name") || "Guest";
+  const email = searchParams.get("email") || "email@example.com";
+  const github = searchParams.get("github") || "@github";
+
   useEffect(() => {
-    const storedImage = localStorage.getItem('ticketUserImage');
+    const storedImage = localStorage.getItem("ticketUserImage");
     if (storedImage) {
       setImageSrc(storedImage);
     }
@@ -29,19 +51,25 @@ export default function Success() {
           <div className="mb-6">
             <CheckCircle className="h-16 w-16 mx-auto text-[#85B79D]" />
           </div>
-          <h1 className="text-3xl md:text-4xl font-bold text-white mb-4">Thank You for Registering!</h1>
+          <h1 className="text-3xl md:text-4xl font-bold text-white mb-4">
+            Thank You for Registering!
+          </h1>
           <p className="text-lg text-purple-200 mb-6">
-            We&apos;ve emailed your ticket to <span className="font-semibold">{email}</span>.
-            <br/>Get ready for an amazing experience at Coding Conf 2025!
+            We&apos;ve emailed your ticket to{" "}
+            <span className="font-semibold">{email}</span>.
+            <br />
+            Get ready for an amazing experience at Coding Conf 2025!
           </p>
           <div className="w-24 h-1 bg-purple-500 mx-auto my-6"></div>
         </div>
 
         {/* Ticket Preview */}
         <div className="mb-10">
-          <h2 className="text-xl font-semibold text-center text-white mb-6">Your Digital Ticket</h2>
-          <Ticket 
-            name={name} 
+          <h2 className="text-xl font-semibold text-center text-white mb-6">
+            Your Digital Ticket
+          </h2>
+          <Ticket
+            name={name}
             email={email}
             github={github}
             imageSrc={imageSrc}
@@ -54,7 +82,10 @@ export default function Success() {
           <ul className="space-y-3">
             <li className="flex items-start">
               <CheckCircle2 className="w-6 h-6 text-purple-300 mr-2" />
-              <span>Check your email for the ticket confirmation and important details</span>
+              <span>
+                Check your email for the ticket confirmation and important
+                details
+              </span>
             </li>
             <li className="flex items-start">
               <CheckCircle2 className="w-6 h-6 text-purple-300 mr-2" />
@@ -62,7 +93,9 @@ export default function Success() {
             </li>
             <li className="flex items-start">
               <CheckCircle2 className="w-6 h-6 text-purple-300 mr-2" />
-              <span>Follow us on social media for updates and announcements</span>
+              <span>
+                Follow us on social media for updates and announcements
+              </span>
             </li>
           </ul>
         </div>
@@ -83,8 +116,11 @@ export default function Success() {
               </button>
             </div>
           </div>
-          
-          <Link href="/" className="inline-block bg-[#85B79D] hover:bg-[#6B9A7E] text-white font-semibold py-2 px-6 rounded-lg transition-colors duration-200">
+
+          <Link
+            href="/"
+            className="inline-block bg-[#85B79D] hover:bg-[#6B9A7E] text-white font-semibold py-2 px-6 rounded-lg transition-colors duration-200"
+          >
             Back to Home
           </Link>
         </div>
