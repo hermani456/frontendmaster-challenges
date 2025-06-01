@@ -11,7 +11,12 @@ const schema = z.object({
   github: z.string().min(1, "GitHub username is required"),
 });
 
-type FormSchema = z.infer<typeof schema>;
+
+type FormSchema = {
+  name: string;
+  email: string;
+  github: string;
+};
 
 const Form = () => {
   const {
