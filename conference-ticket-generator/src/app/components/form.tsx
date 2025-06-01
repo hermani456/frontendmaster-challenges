@@ -5,17 +5,13 @@ import { useForm, SubmitHandler } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 
-type FormSchema = {
-  name: string;
-  email: string;
-  github: string;
-};
-
 const schema = z.object({
   name: z.string().min(1, "Name is required"),
   email: z.string().email("Invalid email address"),
   github: z.string().min(1, "GitHub username is required"),
 });
+
+type FormSchema = z.infer<typeof schema>;
 
 const Form = () => {
   const {
