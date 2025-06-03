@@ -1,11 +1,16 @@
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
+import icon from "../assets/icon-arrow.svg";
 
-interface FormFields {
+export interface FormFields {
   day: string;
   month: string;
   year: string;
+}
+
+export interface FormProps {
+  onCalculateAge: (day: number, month: number, year: number) => void;
 }
 
 const schema = z.object({
@@ -18,7 +23,7 @@ const schema = z.object({
     .refine((val) => {
       const num = parseInt(val);
       return num >= 1 && num <= 31;
-    }, "Day must be between 1 and 31"),
+    }, "Must be a valid day"),
   month: z
     .string()
     .refine(
@@ -28,7 +33,7 @@ const schema = z.object({
     .refine((val) => {
       const num = parseInt(val);
       return num >= 1 && num <= 12;
-    }, "Month must be between 1 and 12"),
+    }, "Must be a valid month"),
   year: z
     .string()
     .refine(
@@ -38,10 +43,10 @@ const schema = z.object({
     .refine((val) => {
       const num = parseInt(val);
       return num >= 1900 && num <= new Date().getFullYear();
-    }, `Year must be between 1900 and ${new Date().getFullYear()}`),
+    }, `Must be a valid year`),
 });
 
-const Form = () => {
+const Form = ({ onCalculateAge }: FormProps) => {
   const {
     register,
     handleSubmit,
@@ -56,19 +61,19 @@ const Form = () => {
       month: parseInt(data.month),
       year: parseInt(data.year),
     };
-    console.log(numericData);
+
+    onCalculateAge(numericData.day, numericData.month, numericData.year);
   };
 
   return (
-    <form
-      className="max-w-xl bg-white h-32 rounded-xl"
-      onSubmit={handleSubmit(onSubmit)}
-    >
-      <div className="flex gap-4 p-4">
-        <div className="flex flex-col">
+    <form onSubmit={handleSubmit(onSubmit)}>
+      <div className="grid grid-cols-3 md:grid-cols-4 gap-4 mb-1">
+        <div className="flex flex-col gap-1">
           <label
             htmlFor="day"
-            className="tracking-widest text-gray-500 font-semibold"
+            className={`tracking-[0.2em] text-[#716f6f] font-bold text-xs ${
+              errors.day ? "text-red-500" : ""
+            }`}
           >
             DAY
           </label>
@@ -78,18 +83,22 @@ const Form = () => {
             inputMode="numeric"
             id="day"
             placeholder="DD"
-            className={`border rounded-md p-3 w-32 font-semibold text-xl${
-              errors.day ? "border-red-500" : "border-gray-300"
+            className={`border rounded-lg py-3 px-4 w-full font-bold text-xl md:text-2xl focus:outline-none focus:border-[#854dff] ${
+              errors.day ? "border-red-500" : "border-[#dbdbdb]"
             }`}
           />
           {errors.day && (
-            <span className="text-red-500 text-xs mt-1">{errors.day.message}</span>
+            <span className="text-red-500 text-xs italic mt-1">
+              {errors.day.message}
+            </span>
           )}
         </div>
-        <div className="flex flex-col">
+        <div className="flex flex-col gap-1">
           <label
             htmlFor="month"
-            className="tracking-widest text-gray-500 font-semibold"
+            className={`tracking-[0.2em] text-[#716f6f] font-bold text-xs ${
+              errors.month ? "text-red-500" : ""
+            }`}
           >
             MONTH
           </label>
@@ -99,18 +108,22 @@ const Form = () => {
             inputMode="numeric"
             id="month"
             placeholder="MM"
-            className={`border rounded-md p-3 w-32 font-semibold text-xl${
-              errors.month ? "border-red-500" : "border-gray-300"
+            className={`border rounded-lg py-3 px-4 w-full font-bold text-xl md:text-2xl focus:outline-none focus:border-[#854dff] ${
+              errors.month ? "border-red-500" : "border-[#dbdbdb]"
             }`}
           />
           {errors.month && (
-            <span className="text-red-500 text-xs mt-1">{errors.month.message}</span>
+            <span className="text-red-500 text-xs italic mt-1">
+              {errors.month.message}
+            </span>
           )}
         </div>
-        <div className="flex flex-col">
+        <div className="flex flex-col gap-1">
           <label
             htmlFor="year"
-            className="tracking-widest text-gray-500 font-semibold"
+            className={`tracking-[0.2em] text-[#716f6f] font-bold text-xs ${
+              errors.year ? "text-red-500" : ""
+            }`}
           >
             YEAR
           </label>
@@ -120,22 +133,29 @@ const Form = () => {
             inputMode="numeric"
             id="year"
             placeholder="YYYY"
-            className={`border rounded-md p-3 w-32 font-semibold text-xl ${
-              errors.year ? "border-red-500" : "border-gray-300"
+            className={`border rounded-lg py-3 pl-4 w-full font-bold text-xl md:text-2xl focus:outline-none focus:border-[#854dff] ${
+              errors.year ? "border-red-500" : "border-[#dbdbdb]"
             }`}
           />
           {errors.year && (
-            <span className="text-red-500 text-xs mt-1">{errors.year.message}</span>
+            <span className="text-red-500 text-xs italic mt-1">
+              {errors.year.message}
+            </span>
           )}
         </div>
       </div>
-      <div className="flex justify-end p-4">
-        <button
-          type="submit"
-          className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 transition-colors"
-        >
-          Submit
-        </button>
+      
+      <div className="relative py-1">
+        <div className="absolute left-0 right-0 h-[1px] top-1/2 bg-[#dbdbdb]"></div>
+        <div className="flex justify-center md:justify-end">
+          <button type="submit" className="relative z-10 cursor-pointer">
+            <img
+              src={icon}
+              alt="Submit"
+              className="size-[65px] md:size-[75px] bg-[#854dff] rounded-full p-4 hover:bg-black transition-colors duration-300"
+            />
+          </button>
+        </div>
       </div>
     </form>
   );
