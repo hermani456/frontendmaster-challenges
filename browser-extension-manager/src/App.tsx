@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import Navbar from "./components/navbar";
 
 function App() {
   const getInitialColorMode = (): boolean => {
@@ -22,14 +23,13 @@ function App() {
     localStorage.setItem("darkMode", isDarkMode.toString());
   }, [isDarkMode]);
 
-  const toggleTheme = () => {
-    console.log("toggling theme");
-    setIsDarkMode((current) => !current);
-  };
+  // const toggleTheme = () => {
+  //   setIsDarkMode((current) => !current);
+  // };
 
   return (
-    <div className="min-h-screen bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100">
-      <button onClick={toggleTheme}>toggle</button>
+    <div className="bg-gradient-to-b from-[#EBF2FC] to-[#EEF8F9] dark:from-[#040918] dark:to-[#091540] min-h-screen">
+      <Navbar isDarkMode={isDarkMode} toggleTheme={setIsDarkMode} />
     </div>
   );
 }
