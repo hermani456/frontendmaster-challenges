@@ -18,7 +18,7 @@ const Extension = ({
   return (
     <div className="bg-white dark:bg-[#212636] p-5 items-start rounded-xl max-w-[24rem] border dark:border-[#545969] border-[#d6e2f5] shadow-lg">
       <div className="flex items-start">
-        <img src={logo} className="w-14" alt="DevLens" />
+        <img src={logo} className="w-14" alt={name} />
         <div className="ml-3 h-[5rem]">
           <h2 className="dark:text-white text-[#09153e] text-lg font-bold">
             {name}
