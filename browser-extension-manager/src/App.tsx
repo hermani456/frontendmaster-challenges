@@ -25,7 +25,7 @@ function App() {
   }, [isDarkMode]);
 
   return (
-    <div className="bg-gradient-to-b from-[#EBF2FC] to-[#EEF8F9] dark:from-[#040918] dark:to-[#091540] min-h-screen">
+    <div className="min-h-screen">
       <Navbar isDarkMode={isDarkMode} toggleTheme={setIsDarkMode} />
       <Extentions />
     </div>

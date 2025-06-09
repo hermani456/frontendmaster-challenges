@@ -2,11 +2,20 @@
 
 @custom-variant dark (&:where(.dark, .dark *));
 
-*,
-/* *::after,
-*::before {
-  box-sizing: border-box;
+html, 
+body {
   margin: 0;
   padding: 0;
-} */
+  height: 100%;
+  overflow-x: hidden;
+}
 
+html {
+  background-image: linear-gradient(to bottom, #EBF2FC, #EEF8F9);
+  background-attachment: fixed;
+}
+
+html.dark {
+  background-image: linear-gradient(to bottom, #040918, #091540);
+  background-attachment: fixed;
+}
