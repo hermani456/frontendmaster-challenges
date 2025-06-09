@@ -1,11 +1,4 @@
-interface ExtensionProps {
-  logo: string;
-  name: string;
-  description: string;
-  isActive: boolean;
-  onToggleActive: () => void;
-  onRemove: () => void;
-}
+import type { ExtensionTypeProps } from "../types";
 
 const Extension = ({
   logo,
@@ -14,7 +7,7 @@ const Extension = ({
   isActive,
   onToggleActive,
   onRemove,
-}: ExtensionProps) => {
+}: ExtensionTypeProps) => {
   return (
     <div className="bg-white dark:bg-[#212636] p-5 items-start rounded-xl max-w-[24rem] border dark:border-[#545969] border-[#d6e2f5] shadow-lg">
       <div className="flex items-start">

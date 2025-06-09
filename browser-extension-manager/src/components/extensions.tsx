@@ -1,17 +1,12 @@
 import Extension from "./extension";
 import { extensions as initialExtensions } from "../data/extensions";
 import { useState } from "react";
-
-interface ExtensionType {
-  logo: string;
-  name: string;
-  description: string;
-  isActive: boolean;
-}
+import type { ExtensionType } from "../types";
 
 const Extentions = () => {
-  type filterType = "All" | "Active" | "Inactive";
-  const [filter, setFilter] = useState<filterType>("All");
+  type FilterType = "All" | "Active" | "Inactive";
+  
+  const [filter, setFilter] = useState<FilterType>("All");
   const [extensionsList, setExtensionsList] =
     useState<ExtensionType[]>(initialExtensions);
 
@@ -29,10 +24,10 @@ const Extentions = () => {
     );
   };
 
-  const filteredExtensions = extensionsList.filter((extension) => {
+  const filteredExtensions = extensionsList.filter((ext) => {
     if (filter === "All") return true;
-    if (filter === "Active") return extension.isActive;
-    if (filter === "Inactive") return !extension.isActive;
+    if (filter === "Active") return ext.isActive;
+    if (filter === "Inactive") return !ext.isActive;
     return false;
   });
   

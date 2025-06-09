@@ -10,15 +10,9 @@ import palettePicker from '../assets/images/logo-palette-picker.svg';
 import linkChecker from '../assets/images/logo-link-checker.svg';
 import domSnapshot from '../assets/images/logo-dom-snapshot.svg';
 import consolePlus from '../assets/images/logo-console-plus.svg';
+import type { ExtensionType } from '../types';
 
-type Extension = {
-    logo: string;
-    name: string;
-    description: string;
-    isActive: boolean;
-};
-
-export const extensions: Extension[] = [
+export const extensions: ExtensionType[] = [
     {
         "logo": devlens,
         "name": "DevLens",
