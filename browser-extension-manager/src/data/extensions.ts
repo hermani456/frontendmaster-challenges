@@ -1,3 +1,16 @@
+import devlens from '../assets/images/logo-devlens.svg';
+import styleSpy from '../assets/images/logo-style-spy.svg';
+import speedBoost from '../assets/images/logo-speed-boost.svg';
+import jsonWizard from '../assets/images/logo-json-wizard.svg';
+import tabMasterPro from '../assets/images/logo-tab-master-pro.svg';
+import viewportBuddy from '../assets/images/logo-viewport-buddy.svg';
+import markupNotes from '../assets/images/logo-markup-notes.svg';
+import gridGuides from '../assets/images/logo-grid-guides.svg';
+import palettePicker from '../assets/images/logo-palette-picker.svg';
+import linkChecker from '../assets/images/logo-link-checker.svg';
+import domSnapshot from '../assets/images/logo-dom-snapshot.svg';
+import consolePlus from '../assets/images/logo-console-plus.svg';
+
 type Extension = {
     logo: string;
     name: string;
@@ -7,73 +20,73 @@ type Extension = {
 
 export const extensions: Extension[] = [
     {
-        "logo": "/src/assets/images/logo-devlens.svg",
+        "logo": devlens,
         "name": "DevLens",
         "description": "Quickly inspect page layouts and visualize element boundaries.",
         "isActive": true
     },
     {
-        "logo": "/src/assets/images/logo-style-spy.svg",
+        "logo": styleSpy,
         "name": "StyleSpy",
         "description": "Instantly analyze and copy CSS from any webpage element.",
         "isActive": true
     },
     {
-        "logo": "/src/assets/images/logo-speed-boost.svg",
+        "logo": speedBoost,
         "name": "SpeedBoost",
         "description": "Optimizes browser resource usage to accelerate page loading.",
         "isActive": false
     },
     {
-        "logo": "/src/assets/images/logo-json-wizard.svg",
+        "logo": jsonWizard,
         "name": "JSONWizard",
         "description": "Formats, validates, and prettifies JSON responses in-browser.",
         "isActive": true
     },
     {
-        "logo": "/src/assets/images/logo-tab-master-pro.svg",
+        "logo": tabMasterPro,
         "name": "TabMaster Pro",
         "description": "Organizes browser tabs into groups and sessions.",
         "isActive": true
     },
     {
-        "logo": "/src/assets/images/logo-viewport-buddy.svg",
+        "logo": viewportBuddy,
         "name": "ViewportBuddy",
         "description": "Simulates various screen resolutions directly within the browser.",
         "isActive": false
     },
     {
-        "logo": "/src/assets/images/logo-markup-notes.svg",
+        "logo": markupNotes,
         "name": "Markup Notes",
         "description": "Enables annotation and notes directly onto webpages for collaborative debugging.",
         "isActive": true
     },
     {
-        "logo": "/src/assets/images/logo-grid-guides.svg",
+        "logo": gridGuides,
         "name": "GridGuides",
         "description": "Overlay customizable grids and alignment guides on any webpage.",
         "isActive": false
     },
     {
-        "logo": "/src/assets/images/logo-palette-picker.svg",
+        "logo": palettePicker,
         "name": "Palette Picker",
         "description": "Instantly extracts color palettes from any webpage.",
         "isActive": true
     },
     {
-        "logo": "/src/assets/images/logo-link-checker.svg",
+        "logo": linkChecker,
         "name": "LinkChecker",
         "description": "Scans and highlights broken links on any page.",
         "isActive": true
     },
     {
-        "logo": "/src/assets/images/logo-dom-snapshot.svg",
+        "logo": domSnapshot,
         "name": "DOM Snapshot",
         "description": "Capture and export DOM structures quickly.",
         "isActive": false
     },
     {
-        "logo": "/src/assets/images/logo-console-plus.svg",
+        "logo": consolePlus,
         "name": "ConsolePlus",
         "description": "Enhanced developer console with advanced filtering and logging.",
         "isActive": true
