@@ -39,7 +39,7 @@ function App() {
             <h6 className="text-[#52ffa8] text-sm font-semibold tracking-widest">
               LOADING...
             </h6>
-            <p className="text-white text-2xl font-semibold">
+            <p className="text-white text-[28px] font-semibold font-dm-sans">
               "Fetching advice..."
             </p>
           </>
@@ -60,9 +60,9 @@ function App() {
           className="my-6 block md:hidden"
         />
         <button
-          className={`bg-[#52ffa8] rounded-full p-4 absolute bottom-0 translate-y-1/2 cursor-pointer hover:opacity-80 transition-opacity ${
+          className={`bg-[#52ffa8] rounded-full p-4 absolute bottom-0 translate-y-1/2 cursor-pointer transition-all ${
             isLoading ? "animate-pulse" : ""
-          }`}
+          } hover:shadow-[0_0_15px_5px_rgba(82,255,168,0.5)]`}
           aria-label="Get new advice"
           onClick={getData}
           disabled={isLoading}
