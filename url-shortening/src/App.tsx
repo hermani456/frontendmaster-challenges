@@ -1,9 +1,12 @@
+import Hero from "./components/hero"
+import Navbar from "./components/navbar"
 
 function App() {
   return (
-    <div className="text-red-500 text-2xl">
-      asd
-    </div>
+    <section className="max-w-screen-xl mx-auto px-4">
+      <Navbar />
+      <Hero />
+    </section>
   )
 }
 
