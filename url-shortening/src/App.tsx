@@ -1,4 +1,6 @@
-import AdvanceStatics from "./components/advanceStatics";
+import AdvancedStatistics from "./components/advancedStatistics";
+import Cta from "./components/cta";
+import Footer from "./components/footer";
 import Hero from "./components/hero";
 import Navbar from "./components/navbar";
 import UrlShortener from "./components/urlShortener";
@@ -13,7 +15,9 @@ function App() {
       <div className="max-w-screen-xl mx-auto px-4 relative top-[4.7rem] sm:top-16">
         <UrlShortener />
       </div>
-      <AdvanceStatics />
+      <AdvancedStatistics />
+      <Cta />
+      <Footer />
     </div>
   );
 }
