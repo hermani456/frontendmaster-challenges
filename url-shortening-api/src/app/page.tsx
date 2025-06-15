@@ -12,10 +12,10 @@ export default function Home() {
         <Navbar />
       </div>
       <Hero />
-      <div className="max-w-screen-xl mx-auto px-4 relative top-[4.7rem] sm:top-16">
+      <div className="mt-20 bg-gray-100 relative">
         <UrlShortener />
+        <AdvancedStatistics />
       </div>
-      <AdvancedStatistics />
       <Cta />
       <Footer />
     </div>
