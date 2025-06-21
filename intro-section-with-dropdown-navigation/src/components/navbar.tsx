@@ -1,16 +1,29 @@
 "use client";
 import logo from "../assets/logo.svg";
-import { ChevronDown, ChevronUp, MenuIcon } from "lucide-react";
+import { ChevronDown, ChevronUp } from "lucide-react";
 import todo from "../assets/icon-todo.svg";
 import calendar from "../assets/icon-calendar.svg";
 import reminders from "../assets/icon-reminders.svg";
 import planning from "../assets/icon-planning.svg";
+import menuIcon from "../assets/icon-menu.svg";
+import closeIcon from "../assets/icon-close-menu.svg";
 import { useState } from "react";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [featuresOpen, setFeaturesOpen] = useState(false);
+  const [companyOpen, setCompanyOpen] = useState(false);
+
   const toggleMenu = () => {
     setIsOpen(!isOpen);
+  };
+
+  const toggleFeatures = () => {
+    setFeaturesOpen(!featuresOpen);
+  };
+
+  const toggleCompany = () => {
+    setCompanyOpen(!companyOpen);
   };
   return (
     <>
@@ -98,24 +111,128 @@ const Navbar = () => {
           </button>
         </div>
       </nav>
-      {/* here i'm trying to make a mobile menu to the right */}
+      {/* mobile navigation */}
       <div className="lg:hidden flex items-center justify-between px-4 py-6">
-        <button className="text-gray-500 hover:text-black">
-          <img src={logo} alt="" />
-        </button>
-        <button className="text-gray-500 hover:text-black">
-          <MenuIcon className="size-8" onClick={toggleMenu} />
+        <img src={logo} alt="Logo" />
+        <button onClick={toggleMenu} className="text-gray-500 hover:text-black">
+          <img src={menuIcon} alt="Menu" className="size-6" />
         </button>
       </div>
-    {isOpen && (
-      <div className="absolute right-0 w-48 h-full bg-red-200 rounded-lg shadow-lg">
-        <ul>
-          <li className="px-4 py-2 hover:bg-gray-100">Profile</li>
-          <li className="px-4 py-2 hover:bg-gray-100">Settings</li>
-          <li className="px-4 py-2 hover:bg-gray-100">Logout</li>
-        </ul>
-      </div>
-    )}
+
+      {/* mobile menu overlay */}
+      {isOpen && (
+        <div className="fixed inset-0 z-50 lg:hidden">
+          {/* background overlay */}
+          <div className="fixed inset-0 bg-black/20" onClick={toggleMenu}></div>
+
+          {/* menu panel */}
+          <div className="fixed top-0 right-0 w-64 h-full bg-white shadow-lg">
+            {/* menu header */}
+            <div className="flex justify-end p-6">
+              <button
+                onClick={toggleMenu}
+                className="text-gray-500 hover:text-black"
+              >
+                <img src={closeIcon} alt="Close" className="w-6 h-6" />
+              </button>
+            </div>
+
+            {/* menu content */}
+            <div className="px-6 pb-6">
+              <ul className="space-y-4">
+                {/* features dropdown */}
+                <li>
+                  <button
+                    onClick={toggleFeatures}
+                    className="flex items-center justify-between w-full text-left text-gray-500 hover:text-black"
+                  >
+                    <span>Features</span>
+                    {featuresOpen ? (
+                      <ChevronUp className="size-4" />
+                    ) : (
+                      <ChevronDown className="size-4" />
+                    )}
+                  </button>
+                  {featuresOpen && (
+                    <ul className="mt-4 ml-4 space-y-3">
+                      <li className="flex items-center gap-3 text-gray-500 hover:text-black cursor-pointer">
+                        <img src={todo} alt="Todo" className="size-4" />
+                        Todo List
+                      </li>
+                      <li className="flex items-center gap-3 text-gray-500 hover:text-black cursor-pointer">
+                        <img src={calendar} alt="Calendar" className="size-4" />
+                        Calendar
+                      </li>
+                      <li className="flex items-center gap-3 text-gray-500 hover:text-black cursor-pointer">
+                        <img
+                          src={reminders}
+                          alt="Reminders"
+                          className="size-4"
+                        />
+                        Reminders
+                      </li>
+                      <li className="flex items-center gap-3 text-gray-500 hover:text-black cursor-pointer">
+                        <img src={planning} alt="Planning" className="size-4" />
+                        Planning
+                      </li>
+                    </ul>
+                  )}
+                </li>
+
+                {/* company dropdown */}
+                <li>
+                  <button
+                    onClick={toggleCompany}
+                    className="flex items-center justify-between w-full text-left text-gray-500 hover:text-black"
+                  >
+                    <span>Company</span>
+                    {companyOpen ? (
+                      <ChevronUp className="size-4" />
+                    ) : (
+                      <ChevronDown className="size-4" />
+                    )}
+                  </button>
+                  {companyOpen && (
+                    <ul className="mt-4 ml-4 space-y-3">
+                      <li className="text-gray-500 hover:text-black cursor-pointer">
+                        History
+                      </li>
+                      <li className="text-gray-500 hover:text-black cursor-pointer">
+                        Our Team
+                      </li>
+                      <li className="text-gray-500 hover:text-black cursor-pointer">
+                        Blog
+                      </li>
+                    </ul>
+                  )}
+                </li>
+
+                {/* other menu items */}
+                <li>
+                  <a href="#" className="text-gray-500 hover:text-black">
+                    Careers
+                  </a>
+                </li>
+                <li>
+                  <a href="#" className="text-gray-500 hover:text-black">
+                    About
+                  </a>
+                </li>
+              </ul>
+
+              {/* login/register buttons */}
+              <div className="mt-8 space-y-4">
+                <button className="w-full text-center py-3 text-gray-500 hover:text-black">
+                  Login
+                </button>
+                <button className="w-full py-3 border-2 border-gray-500 rounded-xl text-gray-500 hover:border-black hover:text-black">
+                  Register
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </>
   );
 };
