@@ -13,10 +13,11 @@ const Hero = () => {
         <div className="space-y-8 lg:space-y-12 text-center lg:text-left">
           <div className="space-y-8 lg:space-y-12">
             <h1 className="text-4xl md:text-5xl lg:text-7xl xl:text-8xl font-bold text-gray-900">
-              Make remote work
+              Make <br className="hidden lg:block" />
+              remote work
             </h1>
 
-            <p className="text-gray-500 text-lg lg:text-xl leading-relaxed max-w-xs md:max-w-md mx-auto lg:mx-0">
+            <p className="text-gray-500 text-lg lg:text-xl leading-relaxed max-w-xs md:max-w-md mx-auto lg:mx-0 font-normal">
               Get your team in sync, no matter your location. Streamline
               processes, create team rituals, and watch productivity soar.
             </p>
