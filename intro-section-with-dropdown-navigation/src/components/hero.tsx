@@ -12,7 +12,7 @@ const Hero = () => {
         {/* left content */}
         <div className="space-y-8 lg:space-y-12 text-center lg:text-left">
           <div className="space-y-8 lg:space-y-12">
-            <h1 className="text-4xl md:text-5xl lg:text-7xl xl:text-8xl font-bold text-gray-900">
+            <h1 className="text-3xl md:text-4xl lg:text-6xl xl:text-7xl 2xl:text-8xl font-bold text-gray-900">
               Make <br className="hidden lg:block" />
               remote work
             </h1>
